@@ -1,12 +1,10 @@
 # Sentimento ![Logo](https://play-lh.googleusercontent.com/nAaDRtLZlshur9o3A2XS_K__4I8m_yZ0gvucECrZtGoEGq8NUWE0Zj1vsyjALBui2Q=w35) Mobile Application ![Logo](https://play-lh.googleusercontent.com/1FikpccbOFZsDc5k9x1OQegu8A53tYcY8dkk_neZiCuOcdxWjzUcF3QebE_E9UQNiW4=w40)
 
-
 **Sentimento**, a social media assisting platform with sentiment analysis feature is a
 mobile application built using Flutter for front end, Flask for back end and Multinomial
 Naive Bayes Theorem for the algorithmic part.
 
 [![Click here to download from Google Play](./report-documentation/doc-assets/googleplay.png)](https://play.google.com/store/apps/details?id=com.awarself.sentimento)
-
 
 Undergraduate Final Year Project of student **Prashant Ghimire** at
 [![University Logo](./report-documentation/doc-assets/lmu.png)](https://www.londonmet.ac.uk/)
@@ -19,7 +17,6 @@ Undergraduate Final Year Project of student **Prashant Ghimire** at
 - [Software Requirement Specification](./report-documentation/Software%20Requirement%20Specification.pdf)
 - [User Manual](./report-documentation/User%20Manual-%20Sentimento.pdf)
 - [Weekly Task Information](./report-documentation/Weekly%20Task%20Information.pdf)
-
 
 ## Tech used
 
@@ -35,11 +32,12 @@ Sentimento uses a number of open source projects to work properly:
 - [GitHub] - Used as version control
 - [Postman API Platform] - Used to test built API's
 
-
 ## Installation
 
 **Sentimento** [application] can either be used by installing from Google Play
+
 #### **or**
+
 can be used by cloning this [repository]
 
 - To run the frontend application you are expected to have the [Flutter] setup ready on your system.
@@ -48,7 +46,7 @@ can be used by cloning this [repository]
 
 ```sh
 cd backend-flask  # to go inside backend dir
-virtualenv env    # to use separate environment to run 
+virtualenv env    # to use separate environment to run
 sudo pip install -r requirements.txt # to get packages
 source env/bin/activate # to start using environment
 flask run --port=80 # to start the backend application
@@ -63,21 +61,21 @@ your preferred browser.
 
 ## License
 
-Sentimento project as listed here in this [repository] is open source, but the [application] available on Google Play is licensed.
+Sentimento [application] available on Google Play is a private forked version of this final year project [repository].
 
 ### **Thank you**
-Please do email at hello@ghimireprashant.com.np for any purposes.
 
-[//]: # (These are reference links used in the body of this note and get stripped out when the markdown processor does its job. There is no need to format nicely because it shouldn't be seen. Thanks SO - http://stackoverflow.com/questions/4823468/store-comments-in-markdown-syntax)
+Please do email at hello@ghimireprashant.com.np for any purpose.
 
-   [Flutter]: <https://flutter.dev/>
-   [Flask]: <https://flutter.dev/>
-   [MultinomialNB]: <https://scikit-learn.org/stable/modules/generated/sklearn.naive_bayes.MultinomialNB.html>
-   [NumPy]: <https://pypi.org/project/numpy/>
-   [Tweepy]: <https://pypi.org/project/tweepy/>
-   [Google API Core]: <https://pypi.org/project/google-api-core/>
-   [VS Code]: <https://code.visualstudio.com/>
-   [GitHub]: <https://github.com/>
-   [Postman API Platform]: <https://www.postman.com/>
-   [application]: <https://play.google.com/store/apps/details?id=com.awarself.sentimento>
-   [repository]: <https://github.com/aprashantz/final-year-project-undergrad>
+[//]: # "These are reference links used in the body of this note and get stripped out when the markdown processor does its job. There is no need to format nicely because it shouldn't be seen. Thanks SO - http://stackoverflow.com/questions/4823468/store-comments-in-markdown-syntax"
+[flutter]: https://flutter.dev/
+[flask]: https://flutter.dev/
+[multinomialnb]: https://scikit-learn.org/stable/modules/generated/sklearn.naive_bayes.MultinomialNB.html
+[numpy]: https://pypi.org/project/numpy/
+[tweepy]: https://pypi.org/project/tweepy/
+[google api core]: https://pypi.org/project/google-api-core/
+[vs code]: https://code.visualstudio.com/
+[github]: https://github.com/
+[postman api platform]: https://www.postman.com/
+[application]: https://play.google.com/store/apps/details?id=com.awarself.sentimento
+[repository]: https://github.com/aprashantz/final-year-project-undergrad
