@@ -65,7 +65,7 @@ Sentimento [application] available on Google Play is a private forked version of
 
 ### **Thank you**
 
-Please do email at hello@ghimireprashant.com.np for any purpose.
+Please do email at hi@ghimireprashant.com.np for any purpose.
 
 [//]: # "These are reference links used in the body of this note and get stripped out when the markdown processor does its job. There is no need to format nicely because it shouldn't be seen. Thanks SO - http://stackoverflow.com/questions/4823468/store-comments-in-markdown-syntax"
 [flutter]: https://flutter.dev/
