@@ -15,7 +15,7 @@ def manual():
         manual_data = request_data['manual_data']
         if len(manual_data) < 3:
             return success_false(msg="Please enter longer sentence than this")
-        if len(manual_data) > 500:
+        elif len(manual_data) > 500:
             return success_false(msg="Paragraph with maximum 500chars is only acceptable at the moment")
 
         # calculating polarity using NLTK library
@@ -30,7 +30,7 @@ def manual():
 
         # responding to user's manual polarity
         return {
-            "success": "true",
+            "success": True,
             "msg": "Analysed given data succesfully",
             "polarity": round(manual_data_polarity, 3)
         }

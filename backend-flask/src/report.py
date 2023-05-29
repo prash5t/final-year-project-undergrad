@@ -32,12 +32,12 @@ def report():
                 })
             if (len(reports) == 0):
                 return success_false(msg="You have not saved any sentiment reports yet")
-            return {"success": "true", "reports": reports[::-1], "msg": "Here are your saved reports"}
+            return {"success": True, "reports": reports[::-1], "msg": "Here are your saved reports"}
 
         except:
             return success_false()
 
-    if request.method == "POST":
+    elif request.method == "POST":
         try:
             request_data = request.get_json()
             platform = request_data['platform']
@@ -57,9 +57,9 @@ def report():
             # first will check if any unwanted format of data is provided
             if ((len(platform) > 20) or (len(platform) < 3)):
                 return success_false(msg="Platform name size to be between 3 to 20")
-            if ((len(data) > 120) or (len(data) < 2)):
+            elif ((len(data) > 120) or (len(data) < 2)):
                 return success_false(msg="Data source size to be between 2 to 20")
-            if ((len(overall_polarity) > 6) or (overall_polarity == "")):
+            elif ((len(overall_polarity) > 6) or (overall_polarity == "")):
                 return success_false(msg="Invalid overall polarity format")
 
             # now if provided post request is valid
@@ -84,6 +84,6 @@ def report():
             db.session.commit()
 
             # now after saving report, providing response
-            return {"success": "true", "msg": "Report succesfully saved."}
+            return {"success": True, "msg": "Report succesfully saved."}
         except:
             return success_false()

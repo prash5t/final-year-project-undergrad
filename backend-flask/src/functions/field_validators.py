@@ -12,4 +12,4 @@ def validate_email(email):
 
 # function that heps to send error msg when request is bad
 def success_false(msg="Invalid API request"):
-    return {"success": "false", "msg": msg}
+    return {"success": False, "msg": msg}

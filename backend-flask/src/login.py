@@ -18,9 +18,9 @@ def login():
         # first will check if any unwanted format of data is provided
         if len(password) < 6:
             return success_false(msg="Password should be at least 6chars")
-        if len(email) > 80:
+        elif len(email) > 80:
             return success_false(msg="Email should be less than 80chars")
-        if not validate_email(email):
+        elif not validate_email(email):
             return success_false(msg="Please enter a valid email address")
 
         # now moving to database querying if provided registration data format is correct
@@ -34,7 +34,7 @@ def login():
             if password_is_correct:
                 access_token = create_access_token(
                     identity=email, expires_delta=False)
-                return {"success": "true", "msg": "Login succesful", "access_token": access_token, "name": trying_user.name, "email": trying_user.email}
+                return {"success": True, "msg": "Login succesful", "access_token": access_token, "name": trying_user.name, "email": trying_user.email}
             # if passoword is wrong
             else:
                 return success_false(msg="Please provide correct password")

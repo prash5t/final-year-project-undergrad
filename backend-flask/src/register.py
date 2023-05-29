@@ -20,19 +20,19 @@ def register():
         # first will check if any unwanted format of data is provided
         if len(name) > 55:
             return success_false(msg="Name should be less than 55chars")
-        if len(name) < 5:
+        elif len(name) < 5:
             return success_false(msg="Name should be at least 5chars")
-        if len(password) < 6:
+        elif len(password) < 6:
             return success_false(msg="Password should be at least 6chars")
-        if len(email) > 80:
+        elif len(email) > 80:
             return success_false(msg="Email should be less than 80chars")
-        if len(purpose) > 30:
+        elif len(purpose) > 30:
             return success_false(msg="Purpose should be less than 30chars")
-        if not validate_email(email):
+        elif not validate_email(email):
             return success_false(msg="Please enter a valid email address")
 
         # now moving to database querying if provided registration data format is correct
-        if User.query.filter_by(email=email).first() is not None:
+        elif User.query.filter_by(email=email).first() is not None:
             # if user with this email already exist
             return success_false(msg="This email is already in use")
 
@@ -48,7 +48,7 @@ def register():
             identity=email, expires_delta=False)
 
         # responding user that user is now registered
-        return {"success": "true", "msg": "User is now registered", "email": email, "name": name, "access_token": access_token}
+        return {"success": True, "msg": "User is now registered", "email": email, "name": name, "access_token": access_token}
 
     except:
         return success_false()

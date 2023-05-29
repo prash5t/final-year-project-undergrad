@@ -18,7 +18,7 @@ def vacancy():
         except:
             return success_false()
 
-    if request.method == "DELETE":
+    elif request.method == "DELETE":
         try:
             user_email = get_jwt_identity()
             current_user = User.query.filter_by(email=user_email).first()
@@ -32,11 +32,11 @@ def vacancy():
             # to update the current open vacancies of the particular user
             current_user.vacancy_count -= 1
             db.session.commit()
-            return {"success": "true", "msg": "Post deleted"}
+            return {"success": True, "msg": "Post deleted"}
         except:
             return success_false()
 
-    if request.method == "POST":
+    elif request.method == "POST":
         try:
             user_email = get_jwt_identity()
             current_user = User.query.filter_by(email=user_email).first()
@@ -58,17 +58,23 @@ def vacancy():
             # now checking post request values before inserting to db
             if(len(title) > 50 or len(title) < 3):
                 return success_false(msg="The length of title must be between 3 to 50")
-            if not validate_email(contact_email):
-                return {"success": "false", "msg": "Please enter a valid email address"}
-            if(len(contact_email) > 80):
-                return {"success": "false", "msg": "Email should not be longer than 80chars"}
-            if(len(contact_number) > 20 or len(contact_number) < 5):
-                return {"success": "false", "msg": "The length of contact number must be between 5 to 20"}
-            if(len(description) > 500 or len(description) < 5):
-                return {"success": "false", "msg": "Length of description must be between 5 to 120"}
-            if (type(work_hr) is not int):
-                return {"success": "false", "msg": "Please enter working hour in numeric form"}
-            if ((type(is_negotiable) is not bool) or (type(is_vacancy) is not bool)):
+            
+            elif not validate_email(contact_email):
+                return success_false(msg="Please enter a valid email address")
+       
+            elif (len(contact_email) > 80):
+                return success_false(msg="Email should not be longer than 80chars")
+               
+            elif (len(contact_number) > 20 or len(contact_number) < 5):
+                return success_false(msg="The length of contact number must be between 5 to 20")
+              
+            elif (len(description) > 500 or len(description) < 5):
+                return success_false(msg="Length of description must be between 5 to 120")
+           
+            elif (type(work_hr) is not int):
+                return success_false(msg="Please enter working hour in numeric form")
+             
+            elif ((type(is_negotiable) is not bool) or (type(is_vacancy) is not bool)):
                 return success_false(msg="Boolean 0 or 1 is only acceptable in negotiability and vacancy status")
 
             # now moving to db insertion part after post req validation
@@ -90,7 +96,7 @@ def vacancy():
             db.session.commit()
 
             # now after saving vacancy, providing response
-            return {"success": "true", "msg": "Your posted vacancy is now publicly available."}
+            return {"success": True, "msg": "Your posted vacancy is now publicly available."}
 
         except:
             return success_false()
@@ -105,7 +111,7 @@ def vacancy_all():
             open_vacancies = Vacancy.query.filter_by(is_vacancy=1)
             return return_vacancies(open_vacancies, msg_when_zero="There are no any open vacancies at the moment.")
         # if user want to access open freelancers
-        if type_of_vacancy == "freelancer":
+        elif type_of_vacancy == "freelancer":
             available_freelancers = Vacancy.query.filter_by(is_vacancy=0)
             return return_vacancies(available_freelancers, msg_when_zero="There are no any available freelancers at the moment.")
         else:
@@ -132,4 +138,4 @@ def return_vacancies(retrieved_vacancies, msg_when_zero):
     if (len(vacancies) == 0):
         return success_false(msg=msg_when_zero)
 
-    return {"success": "true", "vacancies": vacancies, "msg": "Vacancies loaded succesfully"}
+    return {"success": True, "vacancies": vacancies, "msg": "Vacancies loaded succesfully"}

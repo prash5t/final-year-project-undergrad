@@ -3,6 +3,7 @@ from flask_jwt_extended import jwt_required, get_jwt_identity
 from src.database import User, db
 from src.algo.extract_data import youtube_comments_extract
 from src.algo.Sentimento import Sentimento
+from src.functions.field_validators import success_false
 
 youtube_blueprint = Blueprint('youtube', __name__)
 
@@ -18,13 +19,17 @@ def youtube_sentiment():
         try:
             approx_comments = int(request_data['approx_comments'])
         except:
-            return {"success": "false", "msg": "Approx comments should be numeric"}
+            return success_false(msg="Approx comments should be numeric")
+          
         if (len(video_id) < 5 or len(video_id) > 50):
-            return {"success": "false", "msg": "Please provide valid video source"}
-        if (len(api_key) < 5 or len(api_key) > 250):
-            return {"success": "false", "msg": "Please provide valid key/coupan"}
-        if ((approx_comments < 20) or (approx_comments > 1000)):
-            return {"success": "false", "msg": "Comments between 20 to 1000 can only be set at the moment"}
+            return success_false(msg="Please provide valid video source")
+           
+        elif (len(api_key) < 5 or len(api_key) > 250):
+            return success_false(msg="Please provide valid key")
+          
+        elif ((approx_comments < 20) or (approx_comments > 1000)):
+            return success_false(msg="Comments between 20 to 1000 can only be set at the moment")
+           
 
         # after post req validation, moving to youtube sentiment analysis
         youtube_data = youtube_comments_extract(
@@ -41,7 +46,7 @@ def youtube_sentiment():
 
         # after adding the user's analysis count, need to return sentiment result to user
         return {
-            "success": "true",
+            "success": True,
             "msg": "Analysed given data succesfully",
             "title": youtube_data[2],
             "thumbnail": youtube_data[1],
@@ -55,4 +60,4 @@ def youtube_sentiment():
         }
 
     except:
-        return {"success": "false", "msg": "Invalid API request"}
+        return success_false()

@@ -13,7 +13,7 @@ def profile():
         user_email = get_jwt_identity()
         current_user = User.query.filter_by(email=user_email).first()
         return {
-            "success": "true",
+            "success": True,
             "name": current_user.name,
             "email": current_user.email,
             "purpose": current_user.purpose,

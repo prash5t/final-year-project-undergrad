@@ -25,7 +25,7 @@ def twitter_sentiment():
         a_token_secret = request_data['a_token_secret']
         if (len(c_key) < 5 or len(c_key) > 250):
             return success_false(msg="Please provide valid key/coupan")
-        if ((approx_tweets < 20) or (approx_tweets > 1000)):
+        elif ((approx_tweets < 20) or (approx_tweets > 1000)):
             return success_false(msg="Data between 20 to 1000 can only be set at the moment")
 
         # after post req validation, moving to twitter sentiment analysis
@@ -43,7 +43,7 @@ def twitter_sentiment():
 
         # after adding the user's analysis count, need to return sentiment result to user
         return {
-            "success": "true",
+            "success": True,
             "msg": "Analysed given data succesfully",
             "total_data": sentiment.data_count(),
             "spam_count": sentiment.layer_count()[0],
